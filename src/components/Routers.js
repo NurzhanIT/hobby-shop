@@ -3,10 +3,12 @@ import RouteElemenet from "./RouteElement";
 const Routers = () => {
   return (
     <div className="routers">
-      {routes &&
-        routes.map((route_i) => (
-          <RouteElemenet route={route_i} key={route_i.id} />
-        ))}
+      <div className="routers_inner">
+        {routes &&
+          routes.map((route_i) => (
+            <RouteElemenet route={route_i} key={route_i.id} />
+          ))}
+      </div>
     </div>
   );
 };

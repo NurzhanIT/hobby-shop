@@ -1,5 +1,5 @@
 import $api from "../api";
-
+import { setBasket } from "../store/userReducer";
 export const createBasket = (items) => {
   $api
     .post("basket", { items })
@@ -9,18 +9,22 @@ export const createBasket = (items) => {
       console.log("error message: ", err.response.data);
     });
 };
-export const getBasket = (user_id) => {
-  $api
-    .get(`basket/${user_id}`)
-    .then((response) => console.log(response.data.basket))
-    .catch((err) => {
-      console.log("axios: ", err);
-      console.log("error message: ", err.response.data);
-    });
+export const getBasket = () => {
+  return (dispatch) => {
+    $api
+      .get(`basket/`)
+      .then((response) => {
+        dispatch(setBasket(response.data.basket));
+      })
+      .catch((err) => {
+        console.log("axios: ", err);
+        console.log("error message: ", err.response.data);
+      });
+  };
 };
-export const updateBasket = (user_id, items) => {
+export const updateBasket = (items) => {
   $api
-    .patch(`basket/${user_id}`, { items })
+    .patch(`basket/`, { items })
     .then((response) => console.log(response.data.basket))
     .catch((err) => {
       console.log("axios: ", err);

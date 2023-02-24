@@ -1,9 +1,11 @@
+import axios from "axios";
 import $api from "../api";
-
+import { API_URL } from "../api";
+import { userAuth } from "../store/userReducer";
 import { setActive, setUserInfo } from "../store/userReducer";
 export const authUser = async (email, password) => {
-  await $api
-    .post("tokens/authentication", { email, password })
+  await axios
+    .post(`${API_URL}tokens/authentication`, { email, password })
     .then((response) =>
       localStorage.setItem("token", response.data.authentication_token.token)
     )
@@ -22,7 +24,7 @@ export const getUser = () => {
       })
       .catch((err) => {
         console.log("axios: ", err);
-        console.log("error message: ", err.response.data.error);
+        console.log("error message: ", err.response);
       });
   };
 };
@@ -40,13 +42,17 @@ export const activateUser = (token, old_password, new_password) => {
 };
 
 export const registerUser = (name, email, password, role = "user") => {
-  return (dispatch) => {
-    $api
-      .post("users", { name, email, role, password })
-      .then((res) => console.log(res.data.user))
-      .catch((err) => {
-        console.log("axios: ", err);
-        console.log("error message: ", err.response.data.error);
-      });
-  };
+  axios
+    .post("http://localhost:8000/v1/users", { name, email, role, password })
+    .then((res) => console.log(res.data.user))
+    .catch((err) => {
+      console.log("axios: ", err);
+      console.log("error message: ", err.response.data.error);
+    });
+};
+export const checkUser = (dispatch) => {
+  if (localStorage.getItem("token")) {
+    dispatch(getUser());
+    dispatch(userAuth());
+  }
 };

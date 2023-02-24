@@ -81,6 +81,10 @@
 .routers {
   flex: 0 1 22%;
   /* background-color: black; */
+
+  max-height: 100%;
+}
+.routers_inner {
   background: #ffffff;
   border: 1px solid #dddddd;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
@@ -98,9 +102,227 @@
 }
 /* page */
 .page {
-  flex: 0 1 75%;
-  background-color: black;
+  flex: 0 1 70%;
+}
+.page_inner {
+  /* background-color: black; */
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  max-height: 600px;
 }
+.input_search {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(128, 128, 128, 0.543);
+  border-radius: 6px;
+  margin: 0 0 30px 0;
+}
+.input_search input {
+  height: 42px;
+  padding: 0 0 0 10px;
+  flex: 0 1 90%;
+  border-radius: 6px 0 0 6px;
+}
+.search_btn {
+  flex: 1 1 10%;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
+  border-radius: 0 6px 6px 0;
+}
+/* item */
+.items {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -15px -30px;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.item {
+  flex: 0 1 33.333%;
+  padding: 0 15px 30px;
+}
+.item_inner {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-evenly;
+  height: 400px;
+}
+.item_inner:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
+}
+.item_img {
+  display: flex;
+  justify-content: center;
+}
+.item_img img {
+  width: 50px;
+  border-radius: 6px;
+}
+.item .name {
+  font-weight: 600;
+  font-size: 18px;
+}
+.item .description {
+  font-weight: 400;
+  font-size: 14px;
+}
+.item .price {
+  font-weight: 600;
+  font-size: 20px;
+}
+.item .category {
+}
+.add_btn {
+  padding: 10px;
+  background: #eeeeee;
+  color: #777777;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.item_inner:hover .add_btn {
+  background: #c4374c;
+  color: white;
+}
+
+/* login */
+
+.login {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login_inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  font-size: 20px;
+  height: 300px;
+  padding: 30px;
+  border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.568);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
+}
+.submit_btn:hover {
+  cursor: pointer;
+  transform: translate(5px, 0);
+}
+.user {
+  flex: 1 1 50%;
+}
+.user_inner {
+}
+.user_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.user-img img {
+  border-radius: 50%;
+}
+.prebasket {
+  margin: 20px 0 40px;
+}
+.message {
+  padding: 10px;
+  /* background: #001e2b; */
+  border-radius: 6px;
+  border: 1px solid #001e2b;
+  width: 41%;
+  color: black;
+}
+.span::after {
+  content: "";
+}
+
+/* test */
+
+.order_button {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: black;
+  margin: 10px 0 50px;
+  width: 43%;
+  border: 1px solid #001e2b;
+  border-radius: 6px;
+}
+.order_button p {
+  padding: 0 10px 0;
+}
+.arrow span,
+.arrow::after,
+.arrow::before {
+  height: 2px;
+  background: #c4374c;
+  position: absolute;
+}
+.arrow::after,
+.arrow::before {
+  content: "";
+  width: 12px;
+  transition: all 1s ease 0s;
+  /* left: ; */
+}
+.arrow::after {
+  top: 35%;
+  transform: rotate(45deg);
+}
+.arrow::before {
+  bottom: 35%;
+  transform: rotate(-45deg);
+}
+.arrow span {
+  width: 0;
+  top: 50%;
+}
+.order_button:hover {
+  /* background: #061621; */
+  width: 46%;
+  color: white;
+  background: #001e2b;
+}
+.order_button:hover .arrow span {
+  width: 0px;
+  animation: arrow 1s ease 0s 1 normal forwards;
+}
+@keyframes arrow {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 24px;
+  }
+}
+.order_button:hover .arrow::after {
+  transform: translate(24px, 0) rotate(45deg);
+}
+.order_button:hover .arrow::before {
+  transform: translate(24px, 0) rotate(-45deg);
+}
+/* test */
